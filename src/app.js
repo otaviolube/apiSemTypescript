@@ -11,7 +11,7 @@ class App{
     }
 
     database(){
-
+        require('./database');
     }
 
     middlewares(){
