@@ -1,16 +1,14 @@
 const UsuariosModel = require('../models/UsuariosModel');
 
 class UsuariosController {
-    async teste(req, res){
+
+    async create(req, res){
         try{
-            const usuario = await UsuariosModel.create({
-                nome: 'otavio',
-                email: 'otaviolube@gmail.com',
-                password: '123'
-            });
-            console.log(usuario);
+            const body = req.body;
+            const usuario = await UsuariosModel.create(body)
+
             res.json({
-                msg: 'usuario criado com sucesso',
+                msg: 'Usuário inserido com sucesso!',
                 usuario: usuario
             });
         }catch(erro){
@@ -18,10 +16,6 @@ class UsuariosController {
                 msg: 'erro ao inserir usuario'
             });
         }
-    }
-
-    create(){
-
     }
 
     read(){
