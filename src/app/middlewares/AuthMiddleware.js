@@ -6,6 +6,10 @@ class AuthMiddleware {
 
     }
 
+    async validarSessao(req, res, next){
+        next();
+    }
+
     async validarToken(req, res, next){
         const authHeader = req.headers.authorization;
 
@@ -43,7 +47,8 @@ class AuthMiddleware {
             req.user = {
                 id: decoded.id,
                 email: decoded.email,
-                nome: decoded.nome
+                nome: decoded.nome,
+                token: token
             }
             
             return next();
